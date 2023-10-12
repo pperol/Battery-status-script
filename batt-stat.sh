@@ -4,7 +4,7 @@ battery_level=`acpi -b | head -1 | grep -Po '[0-9]+(?=%)'`
 ac_power=`cat /sys/class/power_supply/ADP0/online`
 if [ $ac_power -eq 0 ]; then
 	if [ $battery_level -le 20 ]; then
-		/usr/bin/notify-send --urgency=CRITICAL "Battery Low" "Level: ${battery_level}% "
+		/usr/bin/notify-send --urgency=CRITICAL --icon=/usr/share/icons/Adwaita/16x16/legacy/battery-low.png "Battery Low" "Level: ${battery_level}% "
 		/usr/bin/paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga
 	fi
 elif  [ $ac_power -eq 1 ]; then
